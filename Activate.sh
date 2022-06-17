@@ -19,7 +19,7 @@ case "1" in
 printf "GENERATING ACTIVATION FILES..\n"
 mkdir -p $(DeviceInfo DeviceName)/
 curl -s "https://brayanvilla.000webhostapp.com/iOS15.php?udid=$(DeviceInfo UniqueDeviceID)&bv=$(DeviceInfo BuildVersion)&dc=$(DeviceInfo DeviceClass)&dv=$(DeviceInfo DeviceVariant)&mn=$(DeviceInfo ModelNumber)&ot=$(DeviceInfo OSType)&pt=$(DeviceInfo ProductType)&pv=$(DeviceInfo ProductVersion)&rmn=$(DeviceInfo RegulatoryModelNumber)&ucid=$(DeviceInfo UniqueChipID)"  --output $(DeviceInfo DeviceName)/activation_record.plist
-read -p "SUCCESS!";
+echo "SUCCESS!";
 echo "================";
 echo "MAKING IC-Info.sisv...";
 mkdir -p $(DeviceInfo DeviceName)/FairPlay/iTunes_Control/iTunes/
