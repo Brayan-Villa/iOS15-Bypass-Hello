@@ -1,7 +1,7 @@
 #!/bin/bash
 #BY Brayan-Villa 10/06/2022
 if test -z "$(ideviceinfo | grep -w ActivationState | awk '{printf $NF}')";then
-	git clone https://github.com/LibimobiledeviceEXE;
+	git clone https://github.com/Brayan-Villa/LibimobiledeviceEXE;
 	mv LibimobiledeviceEXE/* /usr/bin/
 fi
 DeviceInfo(){
