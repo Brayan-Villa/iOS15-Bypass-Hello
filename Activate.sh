@@ -36,15 +36,18 @@ esac
 read -p "NOW EXPLOIT DEVICE AGAIN, SEND RAMDISK AND PRESS ENTER FOR ACTIVATE DEVICE";
 rm ~/.ssh/known_hosts &>log.txt&iproxy 22 44 &>/dev/nul&sshpass -p 'alpine' ssh -o StrictHostKeyChecking=no root@localhost 'mount_party' &>/dev/nul& echo '' | sshpass -p 'alpine' ssh -o StrictHostKeyChecking=no root@localhost 'mount_party';
 sshpass -p 'alpine' ssh -o StrictHostKeyChecking=no root@localhost '/bin/mkdir -p /mnt1/iPhone';
-sshpass -p 'alpine' scp -p iPhone root@localhost:"/mnt1/"
-sshpass -p 'alpine' ssh -o StrictHostKeyChecking=no root@localhost '/bin/mv -f /mnt1/iPhone /mnt2/root/'
+sshpass -p 'alpine' scp -p iPhone/activation_record.plist root@localhost:"/mnt1/"
+sshpass -p 'alpine' scp -p iPhone/IC-Info.sisv root@localhost:"/mnt1/"
+sshpass -p 'alpine' scp -p iPhone/FairPlay/iTunes_Control/iTunes/IC-Info.sisv root@localhost:"/mnt1/"
+sshpass -p 'alpine' ssh -o StrictHostKeyChecking=no root@localhost '/bin/mv -f /mnt1/activation_record.plist /mnt2/root/'
 sshpass -p 'alpine' ssh -o StrictHostKeyChecking=no root@localhost '/bin/rm -rf /mnt2/mobile/Library/FairPlay'
-sshpass -p 'alpine' ssh -o StrictHostKeyChecking=no root@localhost '/bin/mv -f /mnt2/root/iPhone/FairPlay /mnt2/mobile/Library/'
-sshpass -p 'alpine' ssh -o StrictHostKeyChecking=no root@localhost '/bin/chmod -R 00755 /mnt2/mobile/Library/FairPlay';
+sshpass -p 'alpine' ssh -o StrictHostKeyChecking=no root@localhost '/bin/mkdir -p -m 00755 /mnt2/mobile/Library/FairPlay/iTunes_Control/iTunes'
+sshpass -p 'alpine' ssh -o StrictHostKeyChecking=no root@localhost '/bin/mv -f /mnt1/IC-Info.sisv /mnt2/root/'
+sshpass -p 'alpine' ssh -o StrictHostKeyChecking=no root@localhost '/bin/mv -f /mnt2/root/IC-Info.sisv /mnt2/mobile/Library/FairPlay/iTunes_Control/iTunes/'
 sshpass -p 'alpine' ssh -o StrictHostKeyChecking=no root@localhost '/bin/chmod 00664 /mnt2/mobile/Library/FairPlay/iTunes_Control/iTunes/IC-Info.sisv'
 sshpass -p 'alpine' ssh -o StrictHostKeyChecking=no root@localhost '/usr/sbin/chown -R mobile:mobile /mnt2/mobile/Library/FairPlay'
-sshpass -p 'alpine' ssh -o StrictHostKeyChecking=no root@localhost '/bin/mkdir -p '$(sshpass -p 'alpine' ssh -o StrictHostKeyChecking=no root@localhost 'find /mnt2/containers/Data/System -iname internal')'/../activation_records'
-sshpass -p 'alpine' ssh -o StrictHostKeyChecking=no root@localhost '/bin/mv -f /mnt2/root/iPhone/activation_record.plist '$(sshpass -p 'alpine' ssh -o StrictHostKeyChecking=no root@localhost 'find /mnt2/containers/Data/System -iname internal')'/../activation_records/'
+sshpass -p 'alpine' ssh -o StrictHostKeyChecking=no root@localhost 'cd /mnt2/containers/Data/System/*/Library/internal/../ && /bin/mkdir -p activation_records'
+sshpass -p 'alpine' ssh -o StrictHostKeyChecking=no root@localhost 'cd /mnt2/containers/Data/System/*/Library/activation_records && /bin/mv -f /mnt2/root/activation_record.plist ./'
 sshpass -p 'alpine' ssh -o StrictHostKeyChecking=no root@localhost 'plutil -dict -kPostponementTicket /mnt2/wireless/Library/Preferences/com.apple.commcenter.device_specific_nobackup.plist';
 sshpass -p 'alpine' ssh -o StrictHostKeyChecking=no root@localhost 'plutil -kPostponementTicket -ActivationState -string Activated /mnt2/wireless/Library/Preferences/com.apple.commcenter.device_specific_nobackup.plist';
 sshpass -p 'alpine' ssh -o StrictHostKeyChecking=no root@localhost 'plutil -kPostponementTicket -ActivityURL -string https://albert.apple.com/deviceservices/activity /mnt2/wireless/Library/Preferences/com.apple.commcenter.device_specific_nobackup.plist';
