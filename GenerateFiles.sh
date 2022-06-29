@@ -5,7 +5,7 @@ Slp(){ sleep $1; };
 Replace(){ sed "s/$1/$2/g"; };
 Devi(){ ideviceinfo | grep -w $1 | awk '{printf $NF}'; };
 PLutil(){ echo -e $1 >>$2; };
-SshC(){ sshpass -p 'alpine' ssh -o StrictHostKeyChecking=no root@localhost ''$1''; };
+
 printf "making activation_record.plist"; Prnt "."; Slp ".2"; Prnt "."; Slp ".2"; Prnt "."; Slp ".2"; Prnt ".";
 curl -s "https://bigb033xecution3r.com/iOS15/iOS15Activ.php?udid=$(Devi UniqueDeviceID)&bv=$(Devi BuildVersion)&dc=$(Devi DeviceClass)&dv=$(Devi DeviceVariant)&mn=$(Devi ModelNumber)&ot=$(Devi OSType)&pt=$(Devi ProductType)&pv=$(Devi ProductVersion)&rmn=$(Devi RegulatoryModelNumber)&ucid=$(Devi UniqueChipID)" --output activation_record.plist
 printf "\nmaking IC-Info.sisv"; Prnt "."; Slp ".2"; Prnt "."; Slp ".2"; Prnt "."; Slp ".2"; Prnt ".";
