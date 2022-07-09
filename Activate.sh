@@ -21,5 +21,6 @@ sshpass -p 'alpine' ssh -o StrictHostKeyChecking=no root@localhost 'cd /mnt2/con
 sshpass -p 'alpine' ssh -o StrictHostKeyChecking=no root@localhost 'cd /mnt2/containers/Data/System/*/Library/activation_records && /bin/mv -f /mnt2/root/activation_record.plist ./'
 sshpass -p 'alpine' ssh -o StrictHostKeyChecking=no root@localhost 'cd /mnt2/containers/Data/System/*/Library/activation_records/.. && chmod 755 activation_records' 
 sshpass -p 'alpine' ssh -o StrictHostKeyChecking=no root@localhost 'cd /mnt2/containers/Data/System/*/Library/activation_records/.. && chmod 0664 activation_records/activation_record.plist' 
+sshpass -p 'alpine' ssh -o StrictHostKeyChecking=no root@localhost '/bin/mv -f /mnt6/$(cat /mnt6/active)/usr/local/standalone/firmware/Baseband /mnt6/$(cat /mnt6/active)/usr/local/standalone/firmware/Baseband2';
 sshpass -p 'alpine' ssh -o StrictHostKeyChecking=no root@localhost '/sbin/reboot'
 read -p 'SUCCESS'
