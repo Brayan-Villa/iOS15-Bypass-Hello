@@ -6,7 +6,7 @@ SshC(){ sshpass -p 'alpine' ssh -o StrictHostKeyChecking=no root@localhost ''$1'
 
 printf "Activating"; Prnt "."; Slp ".2"; Prnt "."; Slp ".2"; Prnt "."; Slp ".2"; Prnt ".";
 rm ~/.ssh/known_hosts &>../log&iproxy 22 44 &>../log&echo "iproxy 22 44" &>proxy; chmod +x proxy; open ./proxy; echo "sshpass -p 'alpine' ssh -o StrictHostKeyChecking=no root@localhost" &>start.sh&start start.sh &>../log&sleep 2;
-echo '';read -p 'IF YOUR SYSTEM IS MacOS, TYPE YOUR PASSWORD IN OTHER TERMINAL";
+echo '';read -p 'IF YOUR SYSTEM IS MacOS, TYPE YOUR PASSWORD IN OTHER TERMINAL';
 SshC 'mount_party'
 sshpass -p 'alpine' scp -p activation_record.plist root@localhost:"/mnt1/"
 sshpass -p 'alpine' scp -p IC-Info.sisv root@localhost:"/mnt1/"
